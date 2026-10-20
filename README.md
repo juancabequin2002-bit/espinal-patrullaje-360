@@ -20,3 +20,8 @@ Abrir `public/index.html`. Las imágenes satelitales necesitan internet. El mapa
 ## Fuentes
 
 Jurisdicciones y recorridos: KML aportado por el usuario. Logos: archivos aportados por el usuario. Imágenes satelitales: Esri, Maxar, Earthstar Geographics y proveedores atribuidos en el visor. Calles: © OpenStreetMap contributors, https://www.openstreetmap.org/copyright.
+
+## Enlaces
+
+- Mapa: https://juancabequin2002-bit.github.io/espinal-patrullaje-360/
+- Publicar en Render: https://render.com/deploy?repo=https://github.com/juancabequin2002-bit/espinal-patrullaje-360
