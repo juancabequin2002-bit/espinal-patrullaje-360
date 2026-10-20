@@ -25,3 +25,9 @@ Jurisdicciones y recorridos: KML aportado por el usuario. Logos: archivos aporta
 
 - Mapa: https://juancabequin2002-bit.github.io/espinal-patrullaje-360/
 - Publicar en Render: https://render.com/deploy?repo=https://github.com/juancabequin2002-bit/espinal-patrullaje-360
+
+## Capas de jurisdicción
+
+Se muestran las 27 veredas del archivo cartográfico aportado y los tres polígonos Centro, Entrerríos y Saucedal de la carpeta MICRO TERRITORIO ESPINAL del KML. Se conservan las nueve zonas y los nueve recorridos anteriores.
+
+Los límites rurales proceden de `veredas_igac.geojson`, cuyos atributos identifican PBOT Espinal y vigencia 2010. No se presenta esta capa como una nueva certificación oficial de límites. Las geometrías de los microterritorios se conservan del KML aportado. Chicoral se muestra como nombre de referencia del centro poblado.
