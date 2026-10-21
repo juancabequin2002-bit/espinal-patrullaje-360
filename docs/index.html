@@ -139,7 +139,7 @@ function focusAssignment(id){
  const route=D.routes.find(r=>r.id===id);if(!route)return;selectedAssignment=id;
  const xs=route.coords.map(p=>p[0]),ys=route.coords.map(p=>p[1]),bounds=[Math.min(...xs),Math.min(...ys),Math.max(...xs),Math.max(...ys)];
  width=host.clientWidth;height=host.clientHeight;svg.setAttribute('viewBox','0 0 '+width+' '+height);bearing=0;document.getElementById('bearing').value=0;document.getElementById('bearingValue').value='0°';
- fit=Math.min((width-100)/Math.max(bounds[2]-bounds[0],60),(height-120)/Math.max(bounds[3]-bounds[1],60),256*2**18/WORLD);fit=Math.max(fit,.001);zoom=1;tx=width/2-(bounds[0]+bounds[2])/2*fit;ty=height/2+(bounds[1]+bounds[3])/2*fit;
+ const overview=D.bounds;fit=Math.min((width-76)/(overview[2]-overview[0]),(height-70)/(overview[3]-overview[1]));const targetScale=Math.min((width-100)/Math.max((bounds[2]-bounds[0])*1.5+200,400),(height-120)/Math.max((bounds[3]-bounds[1])*1.5+200,400),256*2**18/WORLD);zoom=Math.max(.6,Math.min(maximumZoom(),targetScale/fit));tx=width/2-(bounds[0]+bounds[2])/2*fit*zoom;ty=height/2+(bounds[1]+bounds[3])/2*fit*zoom;
  for(const button of document.querySelectorAll('[data-focus-route]'))button.setAttribute('aria-pressed',String(+button.dataset.focusRoute===id));
  for(const line of world.querySelectorAll('.route,.route-halo'))line.classList.toggle('is-selected',+line.dataset.routeLine===id);
  const button=document.querySelector(`[data-focus-route="${id}"]`),caption=document.getElementById('assignmentCaption');caption.textContent=button.dataset.assignmentName;caption.hidden=false;
