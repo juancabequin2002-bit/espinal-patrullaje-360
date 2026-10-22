@@ -11,11 +11,19 @@ Los movimientos son una simulación y no representan posiciones en tiempo real n
 
 ## Render
 
-Crear un Static Site desde este repositorio. Build command: `echo "Static site ready"`. Publish directory: `public`. También se incluye `render.yaml` para despliegue con Blueprint.
+El acceso con usuario y contraseña se ejecuta en un Web Service de Node (`npm install --omit=dev`, `npm start`, plan gratuito). `render-auth.yaml` documenta su configuración. El sitio estático anterior se mantiene como enlace de entrada.
+
+Configurar `NODE_ENV=production`, `AUTH_USERNAME` y `AUTH_PASSWORD_HASH` como variables de entorno de Render. El verificador tiene formato `scrypt:<sal hexadecimal de 16 bytes>:<clave hexadecimal de 64 bytes>`, con los parámetros predeterminados de `crypto.scrypt`. Nunca incluir contraseñas en el HTML ni en el repositorio. Los archivos `.env` se excluyen de Git.
+
+`server.mjs` valida las credenciales, limita los intentos y emite cookies de sesión HttpOnly/Secure/SameSite. Las sesiones duran ocho horas y se revocan al cerrar sesión; reiniciar el servicio también cierra las sesiones. El mapa y las descargas del servicio Node requieren sesión. `/healthz` es público para el control de disponibilidad.
+
+El código y la cartografía ya publicados en este repositorio público y en su historial siguen disponibles en GitHub; el inicio de sesión controla el acceso a la aplicación alojada.
 
 ## Uso local
 
-Abrir `public/index.html`. Las imágenes satelitales necesitan internet. El mapa conserva la imagen de respaldo cuando no hay conexión.
+Para probar la autenticación, configurar un `.env` privado y ejecutar `node --env-file=.env server.mjs`. `npm test` comprueba acceso anónimo, contraseñas incorrectas, CSRF, descargas protegidas y cierre de sesión. La cartografía editable está en `protected/index.html`; mantener esa copia como fuente de futuras actualizaciones del mapa.
+
+Las imágenes satelitales necesitan internet. El mapa conserva la imagen de respaldo cuando no hay conexión.
 
 ## Fuentes
 
