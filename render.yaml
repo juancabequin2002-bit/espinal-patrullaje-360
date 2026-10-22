@@ -4,6 +4,10 @@ services:
     runtime: static
     buildCommand: echo "Static site ready"
     staticPublishPath: public
+    routes:
+      - type: redirect
+        source: /*
+        destination: https://espinal-patrullaje-seguro.onrender.com/*
     headers:
       - path: /*
         name: X-Content-Type-Options
